@@ -1,26 +1,26 @@
-var swarmDefaults = require('dat-swarm-defaults')
-var disc = require('discovery-swarm')
+var flockPresets = require('@flockcore/presets')
+var revelation = require('@flockcore/revelation')
 var xtend = require('xtend')
 
 module.exports = FlockCore
 
-function FlockCore (archive, opts) {
-  if (!(this instanceof FlockCore)) return new FlockCore(archive, opts)
+function FlockCore (vault, opts) {
+  if (!(this instanceof FlockCore)) return new FlockCore(vault, opts)
   if (!opts) opts = {}
 
   var self = this
-  this.archive = archive
+  this.vault = vault
   this.uploading = !(opts.upload === false)
   this.downloading = !(opts.download === false)
   this.live = !(opts.live === false)
 
   // Discovery Swarm Options
   opts = xtend({
-    port: 3282,
-    id: archive.id,
+    port: 6620,
+    id: vault.id,
     hash: false,
     stream: function (peer) {
-      return archive.replicate({
+      return vault.replicate({
         live: self.live,
         upload: self.uploading,
         download: self.downloading
@@ -28,11 +28,11 @@ function FlockCore (archive, opts) {
     }
   }, opts)
 
-  this.swarm = disc(swarmDefaults(opts))
-  this.swarm.once('error', function () {
-    self.swarm.listen(0)
+  this.flock = revelation(flockPresets(opts))
+  this.flock.once('error', function () {
+    self.flock.listen(0)
   })
-  this.swarm.listen(opts.port)
-  this.swarm.join(this.archive.discoveryKey)
-  return this.swarm
+  this.flock.listen(opts.port)
+  this.flock.join(this.vault.revelationKey)
+  return this.flock
 }

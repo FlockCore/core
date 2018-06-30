@@ -1,26 +1,26 @@
 var tape = require('tape')
-var hypercore = require('hypercore')
-var ram = require('random-access-memory')
-var swarm = require('.')
+var ddatabase = require('@ddatabase/core')
+var dwREM = require('@dwcore/rem')
+var flock = require('.')
 
-function getSwarms (opts, cb) {
-  var feed1 = hypercore(ram)
-  feed1.once('ready', function () {
-    var feed2 = hypercore(ram, feed1.key)
-    feed2.once('ready', function () {
-      var write = swarm(feed1, opts)
-      var read = swarm(feed2, opts)
-      var swarms = [write, read]
-      cb(swarms)
+function getFlocks (opts, cb) {
+  var ddb1 = ddatabase(dwREM)
+  ddb1.once('ready', function () {
+    var ddb2 = ddatabase(dwREM, ddb1.key)
+    ddb2.once('ready', function () {
+      var write = flock(ddb1, opts)
+      var read = flock(ddb2, opts)
+      var flocks = [write, read]
+      cb(flocks)
     })
   })
 }
 
 tape('connect and close', function (t) {
   t.plan(6)
-  getSwarms({}, function (swarms) {
-    var write = swarms[0]
-    var read = swarms[1]
+  getFlocks({}, function (flocks) {
+    var write = flocks[0]
+    var read = flocks[1]
     var missing = 2
 
     write.once('connection', function (peer, type) {
@@ -49,9 +49,9 @@ tape('connect and close', function (t) {
 
 tape('connect without utp', function (t) {
   t.plan(6)
-  getSwarms({utp: false}, function (swarms) {
-    var write = swarms[0]
-    var read = swarms[1]
+  getFlocks({utp: false}, function (flocks) {
+    var write = flocks[0]
+    var read = flocks[1]
     var missing = 2
 
     write.once('connection', function (peer, type) {
