@@ -1,0 +1,31 @@
+{
+  "name": "@flockcore/core",
+  "version": "0.1.1",
+  "description": "Library For Joining dDrive and dDatabase Flocks.",
+  "contributors": [
+    "Jared Rice Sr. <jared@dwebs.io>",
+    "Distributed Webs Project, LLC. <labs@distributedwebs.org>"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && dependency-check . && node test.js"
+  },
+  "dependencies": {
+    "@flockcore/presets": "flockcore/presets#master",
+    "@flockcore/revelation": "flockcore/revelation#master",
+    "safe-buffer": "^5.1.2",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "@ddatabase/core": "@ddatabase/core#master",
+    "@ddrive/core": "@ddrive/core#master",
+    "@dwcore/rem": "dwcore/rem#master",
+    "dependency-check": "^3.1.0",
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
