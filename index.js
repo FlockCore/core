@@ -14,7 +14,7 @@ function FlockCore (vault, opts) {
   this.downloading = !(opts.download === false)
   this.live = !(opts.live === false)
 
-  // Discovery Swarm Options
+  // Revelation Flock Options
   opts = xtend({
     port: 6620,
     id: vault.id,
