@@ -16,7 +16,7 @@ function getFlocks (opts, cb) {
   })
 }
 
-tape('connect and close', function (t) {
+tape('FlockCore Core Tests: Connect And Close', function (t) {
   t.plan(6)
   getFlocks({}, function (flocks) {
     var write = flocks[0]
@@ -47,7 +47,7 @@ tape('connect and close', function (t) {
   })
 })
 
-tape('connect without utp', function (t) {
+tape('FlockCore Core Tests: Connect Without UDP', function (t) {
   t.plan(6)
   getFlocks({utp: false}, function (flocks) {
     var write = flocks[0]
