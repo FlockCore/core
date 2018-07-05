@@ -1,6 +1,6 @@
 {
   "name": "@flockcore/core",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Library For Joining dDrive and dDatabase Flocks.",
   "contributors": [
     "Jared Rice Sr. <jared@dwebs.io>",
