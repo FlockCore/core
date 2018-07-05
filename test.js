@@ -1,6 +1,6 @@
 var tape = require('tape')
 var ddatabase = require('@ddatabase/core')
-var dwREM = require('@dwcore/rem')
+var dwREM = require('random-access-memory')
 var flock = require('.')
 
 function getFlocks (opts, cb) {
