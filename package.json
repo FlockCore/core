@@ -1,6 +1,6 @@
 {
   "name": "@flockcore/core",
-  "version": "0.1.8",
+  "version": "0.2.2",
   "description": "Library For Joining dDrive and dDatabase Flocks.",
   "contributors": [
     "Jared Rice Sr. <jared@dwebs.io>",
@@ -12,14 +12,14 @@
     "test": "standard && dependency-check . && node test.js"
   },
   "dependencies": {
-    "@flockcore/presets": "~0.1.6",
-    "@flockcore/revelation": "~0.1.4",
+    "@flockcore/presets": "*",
+    "@flockcore/revelation": "*",
     "safe-buffer": "^5.1.2",
     "xtend": "^4.0.1"
   },
   "devDependencies": {
-    "@ddatabase/core": "~0.2.2",
-    "@ddrive/core": "~0.1.9",
+    "@ddatabase/core": "*",
+    "@ddrive/core": "*",
     "dependency-check": "^3.1.0",
     "random-access-memory": "^3.0.0",
     "standard": "^11.0.1",
